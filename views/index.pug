@@ -4,7 +4,7 @@ html
         link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
         link(rel="stylesheet" href="/css/style.css")
     body.home
-        form#submit_to_do(action="/home" method="get")
+        form#submit_to_do(action="/" method="post")
             .form-row
                 .col-sm-4.offset-sm-4
                     input.form-control(type="text" name="to_do" placeholder="Add new to do")
@@ -13,8 +13,8 @@ html
 
             .col-sm-4.offset-sm-4.list_wrapper
                 ul.list-group
-                    -if (toDoes.length)
-                        - for (let toDo of toDoes)
+                    -if (toDoes)
+                        -for (let toDo of toDoes)
                             li.list-group-item
                                 .to_do_item
                                     span.id= toDo.id + ". "
@@ -23,13 +23,13 @@ html
                                     span.icon_wrapper
                                         a(href=`/edit/${toDo.id}`)
                                             img.icon(src="/icons/edit.svg")
-                                    span.icon_wrapper
-                                        a#delete_btn(href="javascript:;")
-                                            img.icon(src="/icons/bin.svg")
-                    - else
+                                    form(method="post" action=`/${toDo.id}?_method=DELETE`)
+                                        span.icon_wrapper
+                                            button#delete_btn.btn(type="submit")
+                                                img.icon(src="/icons/bin.svg")
+                    -else
                         li= ['There are no to does']
         footer
             script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js")
             script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js")
             script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js")
-            script(src="/js/add.js")
