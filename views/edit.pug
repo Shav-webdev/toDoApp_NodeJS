@@ -1,0 +1,23 @@
+html
+    head
+        title= title
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
+        link(rel="stylesheet" href="/css/style.css")
+    body
+        .col-sm-4.offset-sm-4.list_wrapper
+            ul.list-group
+                li.list-group-item
+                    .to_do_item
+                        span.id= toDo.id + "."
+                        span.title= toDo.title
+                    .btn_wrapper
+                        span.icon_wrapper
+                            a(href=`/edit/`)
+                                img.icon(src="/icons/save.svg")
+
+
+    footer
+        script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js")
+        script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js")
+        script(src="/js/add.js")
