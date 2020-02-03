@@ -25,6 +25,18 @@ app.delete("/:id", function(req, res) {
   res.render("index", { toDoes: globalStorage });
 });
 
+// app.put('/edit/:id', (req, res) => {
+//   console.log(req.body.edit_todo);
+//   res.redirect(req.get('referer'));
+// });
+
+app.put('/edit/:id', function (req, res) {
+  console.log(req.params.id)
+  console.log(req.body)
+  res.redirect('/');
+});
+
+
 app.get("/edit/:id", (req, res, next) => {
   let toDo = globalStorage.filter((el) => {
     return el.id === Number(req.params.id);

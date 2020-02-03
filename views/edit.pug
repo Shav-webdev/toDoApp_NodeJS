@@ -8,12 +8,13 @@ html
             ul.list-group
                 li.list-group-item
                     .to_do_item
-                        span.id= toDo.id + "."
-                        span.title= toDo.title
+                        span
+                        input(value=`${toDo.title}` name=`edit_todo`)
                     .btn_wrapper
-                        span.icon_wrapper
-                            a(href=`/edit/`)
-                                img.icon(src="/icons/save.svg")
+                        form(action=`/edit/${toDo.id}?_method=PUT` method="post")
+                            span.icon_wrapper
+                                button(type="submit")
+                                    img.icon(src="/icons/save.svg")
 
 
     footer
