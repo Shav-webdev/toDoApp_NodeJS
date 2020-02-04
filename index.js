@@ -16,7 +16,7 @@ app.use("/", homeRoute);
 app.use(express.static(__dirname + "/public"));
 
 app.delete("/:id", function(req, res) {
-  let id = parseInt(req.params.id);
+  let id = parseInt(req.params.id, 10);
   console.log(id);
   globalStorage = globalStorage.filter(toDo => {
     return toDo.id !== id;
