@@ -13,7 +13,6 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', urlencodedParser, function(req, res) {
-    console.log(req.body.to_do);
     let id = globalStorage.length;
     if (req.body.to_do.toString().length){
         globalStorage.push(
@@ -26,7 +25,6 @@ router.post('/', urlencodedParser, function(req, res) {
     }else{
         res.send(`<a href="/">Go back <a/>`)
     }
-    console.log(globalStorage)
 });
 
 
